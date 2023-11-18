@@ -5,7 +5,7 @@ import struct
 # The following mapping from grayscale (byte) values to ASCII art is used:
 
 def byte_to_ascii(val):
- intensities = " `.:^;+*D8B#%@"
+ intensities = " `.:^~;+*?D0#%B@"
  return intensities[int(val / 256.0 * len(intensities))]
 
 # The image files have the following format:
