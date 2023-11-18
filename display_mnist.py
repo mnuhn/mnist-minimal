@@ -1,12 +1,11 @@
+"Display the contents of the MNIST dataset with minimal boilerplate."
 import gzip
 import struct
 
-# Display the contents of the MNIST dataset with minimal boilerplate.
 # The following mapping from grayscale (byte) values to ASCII art is used:
-
 def byte_to_ascii(val):
- intensities = " `.:^~;+*?D0#%B@"
- return intensities[int(val / 256.0 * len(intensities))]
+  intensities = " `.:^~;+*?D0#%B@"
+  return intensities[int(val / 256.0 * len(intensities))]
 
 # The image files have the following format:
 # This is a gzipped big-endian file with the following format:
@@ -33,7 +32,7 @@ _, num_images, num_rows, num_cols = struct.unpack(">IIII", images.read(16))
 labels = gzip.open("t10k-labels-idx1-ubyte.gz")
 _, num_labels = struct.unpack(">II", labels.read(8))
 
-assert(num_labels == num_images)
+assert num_labels == num_images
 
 for i in range(0, num_images):
   label = int(labels.read(1)[0])
